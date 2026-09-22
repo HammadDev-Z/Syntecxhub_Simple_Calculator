@@ -76,7 +76,11 @@ Commands: 'clear' to reset the screen, 'exit' to quit
 def run():
     print(MENU)
     while True:
-        user_input = input("Enter calculation (or command): ").strip()
+        try:
+            user_input = input("Enter calculation (or command): ").strip()
+        except (KeyboardInterrupt, EOFError):
+            print("\nGoodbye!")
+            break
 
         if not user_input:
             continue
